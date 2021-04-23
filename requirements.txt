@@ -1,1 +1,5 @@
 Flask==1.1.2
+pandas==1.2.4
+flask-mail==0.9.1
+flask-wtf==0.14.3
+wtforms==2.3.3

@@ -1,5 +1,4 @@
 from flask import request
-import psycopg2
 import os
 from flask_wtf import FlaskForm
 from wtforms import TextField, BooleanField, TextAreaField, SubmitField
