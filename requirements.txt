@@ -3,3 +3,5 @@ pandas==1.2.4
 flask-mail==0.9.1
 flask-wtf==0.14.3
 wtforms==2.3.3
+flask-mobility==1.1.0
+flask-moment==0.11.0
