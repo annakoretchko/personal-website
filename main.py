@@ -5,18 +5,25 @@ import helper
 import pandas as pd
 from flask_mail import Mail, Message
 
+from flask import Flask, render_template
+from flask_mobility import Mobility
+from flask_mobility.decorators import mobile_template
+
 # Configure application
 app = Flask(__name__)
+Mobility(app)
 
 
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
 
+@mobile_template("{mobile/}index.html")
 @app.route('/index', methods=['POST', 'GET'])
 @app.route('/', methods=['POST', 'GET'])
+
 def index():
 
-    title_text = 'Title of Page Goes Here'
+    title_text = 'Not developed for phones/mobile yet, looks best (and really only works) on computer as of now'
 
     return render_template('index.html',
                                 title_text=title_text,
