@@ -19,8 +19,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 @app.route('/', methods=['POST', 'GET'])
 def index():
 
-    title_text = 'Not developed for phones/mobile yet, looks best (and really only works) on computer as of now'
-
+    title_text = 'Landing Page Text'
     return render_template('index.html',
                                 title_text=title_text,
                                 title="SUBTITLE OF LANDING PAGE HERE",
@@ -45,10 +44,7 @@ def about():
 
     # get the title content for the portfolio page
     title_text = "about go here"
-    # skills1= {"read": '1', "write": '4', "run": '5'}
-    # skills2= {"code": '1', "bike": '4', "lift": '5'}
-    # #skills = [skills1,skills2]
-    # skills = {"code": 'test', "bike": '4', "lift": '5'}
+
     skills = helper.get_skill_content()
 
     return render_template('/about.html',

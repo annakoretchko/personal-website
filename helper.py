@@ -19,18 +19,36 @@ def get_skill_content():
     Returns: skill_list
     '''
 
-    #db_row = check_language('skills', lang)
-    db_row= {"read": '1', "write": '4', "run": '5'}
-    # instantiate a dict to save all projects in
-    skill_dict = {}
-
-    # iterate through all the skills in the database
-    for skill in db_row:
-        if skill[1] in skill_dict.keys():
-            skill_dict[skill[1]].append(list(skill[2:5]))
-        else:
-            skill_dict[skill[1]] = [list(skill[2:5])]
-
-    skill_dict= {'Programming Languages': ['read',4], 'Machine Learning': 'run', 'Software Engineering': 'code', 'Data Analysis':10}
+   
+    skill_dict = {
+        "Python": [["Science Stack",5,'NumPy,pandas,SciPy,seaborn, matplotlib, PyTables,scikit-learn,cvxpy,request'],
+                                  ["Data Visualization",4,'D3, Plotly, flask, bootstrap'],
+                                  ["Deployment",4,'PyInstaller, Docker, GCP, Bash'],
+                                  ["OOP",4,'> 3 years'],
+                                  ["Python",4,'> 3 years']],
+        "ETL": [["Python",4,'> 3 years'],
+                                ["Data Wrangling",5,'> 3 years'],
+                                ["SQL",4,'> 3 years'],
+                                ["Python",4,'> 3 years'],
+                                ["Python",4,'> 3 years']],
+                                  
+        "Programming words ": [["Python",4,'> 3 years'],
+                                ["Python",4,'> 3 years'],
+                                ["Python",4,'> 3 years'],
+                                ["Python",4,'> 3 years'],
+                                ["Python",4,'> 3 years']],
+                                                            
+                                  
+                                  }
+    
 
     return skill_dict
+                            
+                            
+                            
+                            
+
+
+
+
+  

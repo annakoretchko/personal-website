@@ -141,16 +141,25 @@
                 </p>
             </div>
         </div>
-        <div class="row row-legend justify-content-center about-header">
-            Hover cursor over bars for more information
-        </div>
         <div class="row about-row justify-content-center">
             {% for topic, one_skill in skills.items() %}
             <div class="col-lg-3 col-md-6 col-12">
                 <div class="skill-cat text-center">
                     <h5>{{ topic }}</h5>
                 </div>
-                <h5>{{ skills }}</h5>
+                <div class="row">
+                    {% for item in one_skill %}
+                    {% set level = item[1]/5*100 %}
+                    <div class="col-12 text-right">
+                        <p>{{ item[0] }} - {{ item[1] }}</p>
+                        <div class="skill-bar">
+                            <div class="skill-spec" style="width: {{ level }}%;">
+                            </div>
+                            <span class="tooltiptext">{{ item[2] }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
             {% endfor %}
         </div>
