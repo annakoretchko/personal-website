@@ -3,6 +3,8 @@ import os
 from flask_wtf import FlaskForm
 from wtforms import TextField, BooleanField, TextAreaField, SubmitField
 import pandas as pd
+from flask_mail import Mail, Message
+import secrets
 
 class ContactForm(FlaskForm):
     name = TextField("Name")
@@ -10,6 +12,7 @@ class ContactForm(FlaskForm):
     subject = TextField("Subject")
     message = TextAreaField("Message")
     submit = SubmitField("Send")
+    
 
 
 def get_skill_content():
@@ -48,7 +51,36 @@ def get_skill_content():
                             
                             
 
+def send_me_email(app,name,email,subject,message):
 
+    app.config['MAIL_SERVER']='smtp.gmail.com'
+    app.config['MAIL_PORT'] = 465
+    app.config['MAIL_USERNAME'] = secrets.MAIL_USERNAME
+    app.config['MAIL_PASSWORD'] = secrets.MAIL_PASSWORD
+    app.config['MAIL_USE_TLS'] = False
+    app.config['MAIL_USE_SSL'] = True
+    mail = Mail(app)
+    msg = Message(subject, sender = email, recipients = ['annakoretchko@gmail.com'])
+    msg.body = message + "\nSender's Name: " + name + "\nSender's e-mail: " + email 
+    mail.send(msg)
+    thanks_response = "Thanks for connecting "+str(name)+"!"
+    return thanks_response
+
+
+def send_user_email(app,name,email,subject,message):
+
+    app.config['MAIL_SERVER']='smtp.gmail.com'
+    app.config['MAIL_PORT'] = 465
+    app.config['MAIL_USERNAME'] = secrets.MAIL_USERNAME
+    app.config['MAIL_PASSWORD'] = secrets.MAIL_PASSWORD
+    app.config['MAIL_USE_TLS'] = False
+    app.config['MAIL_USE_SSL'] = True
+    mail = Mail(app)
+    msg = Message(subject, sender = email, recipients = [email])
+    msg.body = "Thanks for connecting, " + name +"!"
+    mail.send(msg)
+   
+ 
 
 
   

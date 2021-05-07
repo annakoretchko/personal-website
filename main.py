@@ -1,19 +1,18 @@
-from flask import Blueprint, Flask, g, jsonify, render_template, request, Response, redirect, url_for, send_from_directory
+from flask import Blueprint, Flask, g, jsonify, render_template, request, Response, redirect, url_for, send_from_directory, flash
 
 import os
 import helper
 import pandas as pd
 from flask_mail import Mail, Message
-
+import secrets
 
 
 # Configure application
 app = Flask(__name__)
+mail= Mail(app)
 
 
-
-SECRET_KEY = os.urandom(32)
-app.config['SECRET_KEY'] = SECRET_KEY
+app.config['SECRET_KEY'] = secrets.SECRET_KEY
 
 @app.route('/index', methods=['POST', 'GET'])
 @app.route('/', methods=['POST', 'GET'])
@@ -56,20 +55,28 @@ def about():
 @app.route('/contact', methods=["GET","POST"])
 def contact():
     title_text = "TITLE HERE"
+    
     form = helper.ContactForm()
+    
     if request.method == 'POST':
         name =  request.form["name"]
         email = request.form["email"]
         subject = request.form["subject"]
         message = request.form["message"]
-        res = pd.DataFrame({'name':name, 'email':email, 'subject':subject ,'message':message}, index=[0])
-        res.to_csv('./contactusMessage.csv')
+        #res = pd.DataFrame({'name':name, 'email':email, 'subject':subject ,'message':message}, index=[0])
+        #res.to_csv('./contactusMessage.csv')
+       
+        thanks_response =helper.send_me_email(app,name,email,subject,message)
+        helper.send_user_email(app,name,email,subject,message)
+
+        confirmation_text = "A confirmation e-mail has been sent to you"
         return render_template('/contact.html', 
                                 form=form,
-                                title_text=title_text,
-                                title = "CONTACT TILEEEEE",
+                                title_text=confirmation_text,
+                                title = thanks_response,
                                 id = "contact")
     else:
+        
         return render_template('/contact.html', 
                                 form=form,
                                 title_text=title_text,
