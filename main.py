@@ -18,10 +18,12 @@ app.config['SECRET_KEY'] = secrets.SECRET_KEY
 @app.route('/', methods=['POST', 'GET'])
 def index():
 
-    title_text = 'Landing Page Text'
+    title_text = 'Welcome to my site!'
+
+    title = "Hello! I am currently a Data Scientist and I created this site as a way to host my projects, share ideas and explore development tools!"
     return render_template('index.html',
-                                title_text=title_text,
-                                title="SUBTITLE OF LANDING PAGE HERE",
+                                title_text=title,
+                                title=title_text,
                                 id="index")
 
 
