@@ -182,7 +182,7 @@
     min-height: 62px;
 }
 
-.skills
+.skills-port
 {
     font-size: 12px;
 }
@@ -258,6 +258,7 @@
 
     .skills
     {
+        
         font-size: 14px;
     }
 }

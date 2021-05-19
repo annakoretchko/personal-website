@@ -33,10 +33,13 @@ def portfolio():
         # get the title content for the portfolio page
     title_text = "projects go here"
 
+    # get all projects from the database
+    zipped = helper.get_portfolio_content()
     return render_template('/portfolio.html',
                             title_text=title_text,
                             title="PROJECT PORTFOLIO",
-                            id="portfolio")
+                            id="portfolio",
+                            projects=zipped)
 
 @app.route('/about', methods=['POST', 'GET'])
 def about():
