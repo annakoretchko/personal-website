@@ -63,15 +63,14 @@ def about():
 def garmin():
 
     # get the title content for the portfolio page
-    title_text = "about go here"
-
+    title_text = "Analyzing this data allows me to gain insights into my running techniques. For example, I know I have the best cadence and run the fastest when running 3 miles in contrast to 2 or 4).\nAdditionally, I can see my heart rate is decreasing over the past 8 years, meaning I am getting more fit and optimizing my anaerobic threshold."
     demo_data = helper.get_garmin_demo_data()
     
 
     return render_template('/garmin.html',
                             title_text=title_text,
                             demo_data = demo_data,
-                            title="Garmin data",
+                            title="Garmin Data Exploration",
                             id="about")
 
 @app.route('/contact', methods=["GET","POST"])
