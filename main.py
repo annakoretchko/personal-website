@@ -20,6 +20,7 @@ def index():
 
     title_text = 'Welcome to my site!'
 
+
     title = "Hello! I am currently a Data Scientist and I created this site as a way to host my projects, share ideas and explore development tools!"
     return render_template('index.html',
                                 title_text=title,
@@ -55,6 +56,22 @@ def about():
                             title_text=title_text,
                             skills = skills,
                             title="ABOUT ME",
+                            id="about")
+
+
+@app.route('/garmin', methods=['POST', 'GET'])
+def garmin():
+
+    # get the title content for the portfolio page
+    title_text = "about go here"
+
+    demo_data = helper.get_garmin_demo_data()
+    
+
+    return render_template('/garmin.html',
+                            title_text=title_text,
+                            demo_data = demo_data,
+                            title="Garmin data",
                             id="about")
 
 @app.route('/contact', methods=["GET","POST"])

@@ -1,0 +1,183 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    Garmin
+{% endblock %}
+
+{% block main %}
+
+
+
+
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawVisualization);
+
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+      
+
+            ['Year',  'Distance', 'Heart Rate' , 'Cadence',  'Speed',  'Elevation Gain','Activities'],
+            ['2014',3.6, 163.3, 172.7, 7.0, 72.2, 20.8],
+            ['2015',3.2, 170.0, 172.0, 6.7, 65.0, 22.0],
+            ['2016',2.8, 156.2, 171.8, 6.4, 132.0, 10.6],
+            ['2017',2.7, 147.2, 164.2, 6.1, 120.2, 13.6],
+            ['2018',2.7, 146.7, 161.6, 5.8, 149.5, 16.7],
+            ['2019',2.7, 140.2, 160.1, 6.3, 149.1, 16.6],
+            ['2020',3.1, 150.7, 167.0, 7.0, 147.3, 14.9],
+            ['2021',3.1, 149.8, 167.6, 6.9, 116.0, 11.2]
+      ]);
+  
+
+        var options = {
+          title : 'Average Basic Running Metrics per Year',
+          vAxis: {title: 'Avg Metric'},
+          hAxis: {title: 'Year'},
+          seriesType: 'bars',
+          series: {5: {type: 'line'}}
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div1'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div1" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
+
+
+
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawVisualization);
+
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+      
+
+        ['Distance',  'Heart Rate' , 'Cadence',  'Speed',  'Elevation Gain','Activities'],
+            [2.0,146.3, 162.8, 6.2, 109.3, 16.7],
+            [3.0,150.1, 166.7, 6.6, 110.5, 57.7],
+            [4.0,150.5, 164.8, 6.5, 216.7, 14.2],
+
+            // ['Distance',  'Heart Rate' , 'Cadence',  'Speed',  'Elevation Gain','Activities'],
+            // [2.0,0.972093023255814, 0.9766046790641872, 0.9393939393939394, 0.5043839409321643, 0.28942807625649913],
+            // [3.0,0.9973421926910299, 1.0, 1.0, 0.5099215505306877, 1.0],
+            // [4.0,1.0, 0.9886022795440913, 0.9848484848484849, 1.0, 0.2461005199306759],
+         
+      ]);
+  
+
+        var options = {
+          title : 'Average Metric by Distance Ran',
+          vAxis: {title: 'Avg Metric'},
+          hAxis: {title: 'Year'},
+          seriesType: 'bars',
+          series: {5: {type: 'line'}}
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
+
+
+<html>
+    <head>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+  
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+      
+
+      ['Year', 'Heart Rate' , 'Cadence'],
+      ['2014', 163.3, 172.7],
+      ['2015',170.0, 172.0],
+      ['2016', 156.2, 171.8],
+      ['2017',147.2, 164.2],
+      ['2018', 146.7, 161.6],
+      ['2019',140.2, 160.1],
+      ['2020', 150.7, 167.0],
+      ['2021',149.8, 167.],
+        ]);
+
+          var options = {
+            title: 'Heart Rate vs Run Cadence',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+          };
+  
+          var chart = new google.visualization.LineChart(document.getElementById('curve_chart1'));
+  
+          chart.draw(data, options);
+        }
+      </script>
+    </head>
+    <body>
+      <div id="curve_chart1" style="width: 900px; height: 500px"></div>
+    </body>
+  </html>
+  
+
+
+
+<html>
+    <head>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+  
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+      
+
+      ['Year', 'Speed' , 'Distance'],
+      ['2014', 7.0, 3.6],
+      ['2015',6.7, 3.2],
+      ['2016', 6.4, 2.8],
+      ['2017',6.1, 2.7],
+      ['2018', 5.8, 2.7],
+      ['2019',6.3, 2.7],
+      ['2020', 7.0, 3.1],
+      ['2021',6.9, 2.9],
+        ]);
+
+          var options = {
+            title: 'Distance vs Speed',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+          };
+  
+          var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+  
+          chart.draw(data, options);
+        }
+      </script>
+    </head>
+    <body>
+      <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    </body>
+  </html>
+
+
+{% endblock %}

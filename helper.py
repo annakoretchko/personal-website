@@ -5,6 +5,9 @@ from wtforms import TextField, BooleanField, TextAreaField, SubmitField
 import pandas as pd
 from flask_mail import Mail, Message
 import secrets
+from utils import get_data_utils as get_data_utils
+from utils import visualize_data_utils as visualize_data_utils
+import json
 
 class ContactForm(FlaskForm):
     name = TextField("Name")
@@ -120,3 +123,30 @@ def get_portfolio_content():
 
 
   
+def get_garmin_demo_data():
+    
+    data_path = 'static/demo_data/Month.csv'
+    # reads in data path of csv to dataframe 
+    df = pd.read_csv(data_path)
+
+    # subset and rename cols
+    df = get_data_utils.rename_cols(df)
+
+    # remove units from df
+    df = get_data_utils.remove_units(df)
+
+    # convert astype for each column to appropriate type
+    df = get_data_utils.convert_type(df)
+
+    df = df.drop(columns = ['Time_Period'])
+
+    # combo data
+    #df_combo = visualize_data_utils.create_combo_chart(df)
+
+    #df_HR_cadence = visualize_data_utils.create_combo_HR_cadence(df)
+
+    #df_speed_distance = visualize_data_utils.create_combo_speed_distance(df)
+
+    df_combo_avg_distance = visualize_data_utils.create_combo_chart_Avgerage_Distance(df)
+    return df
+   
