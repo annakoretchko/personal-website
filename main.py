@@ -34,13 +34,13 @@ def portfolio():
     # default language if just portfolio is entered in url
 
         # get the title content for the portfolio page
-    title_text = "projects go here"
+    title_text = "Here are some of my best, newest, or just intersting projects I have done. Enjoy the demos and exploring the source code on my GitHub."
 
     # get all projects from the database
     zipped = helper.get_portfolio_content()
     return render_template('/portfolio.html',
                             title_text=title_text,
-                            title="PROJECT PORTFOLIO",
+                            title="Portfolio",
                             id="portfolio",
                             projects=zipped)
 
@@ -48,15 +48,26 @@ def portfolio():
 def about():
 
     # get the title content for the portfolio page
-    title_text = "about go here"
+    title_text = "I am extremely passionate about data, as it allows to cross over into any field and is integral to every thing we do today. I love fitness and finance, thus a lot of my personal pet projects are around my own fitness or financial data. I have my Master's from Georgia Teach and am intersted in FinTech and Financial Engineering."
 
     skills = helper.get_skill_content()
 
     return render_template('/about.html',
                             title_text=title_text,
                             skills = skills,
-                            title="ABOUT ME",
+                            title="About Me",
                             id="about")
+
+
+@app.route('/graph', methods=['POST', 'GET'])
+def graph():
+
+    # path to demo data
+    
+    data_path = "/templates/board_games.csv"
+    #d3_path = "/templates/lib/d3.v5.min.js"
+    return render_template('/graph.html',
+                            data_path =data_path)
 
 
 @app.route('/garmin', methods=['POST', 'GET'])
