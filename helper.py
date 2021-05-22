@@ -27,22 +27,31 @@ def get_skill_content():
 
    
     skill_dict = {
-        "Python": [["Science Stack",5,'NumPy,pandas,SciPy,seaborn, matplotlib, PyTables,scikit-learn,cvxpy,request'],
+        "Python": [["Science Stack",5,'NumPy, pandas, SciPy, scikit learn, cvxpy, sklearn'],
                                   ["Data Visualization",4,'D3, Plotly, flask, bootstrap'],
                                   ["Deployment",4,'PyInstaller, Docker, GCP, Bash'],
-                                  ["OOP",4,'> 3 years'],
-                                  ["Python",4,'> 3 years']],
-        "ETL": [["Python",4,'> 3 years'],
-                                ["Data Wrangling",5,'> 3 years'],
-                                ["SQL",4,'> 3 years'],
-                                ["Python",4,'> 3 years'],
-                                ["Python",4,'> 3 years']],
-                                  
-        "Programming words ": [["Python",4,'> 3 years'],
-                                ["Python",4,'> 3 years'],
-                                ["Python",4,'> 3 years'],
-                                ["Python",4,'> 3 years'],
-                                ["Python",4,'> 3 years']],
+                                  ["OOP and Procedural",3,'Modeling, Inheritance, Class, jupyter notebooks'],
+                                  ["Other Languages",4,'R, MATLAB, javascript, html, Spark, Hadoop']],
+
+
+        "ETL": [["Data Wrangling",5,'PCA, Standardization, Normalization'],
+                                ["Pipeline Structure",5,'Source, Target, Organization, Optimization'],
+                                ["SQL",4,'sqlite , NoSQL, PostgresSQL'],
+                                ["API",4,'REST, request, HTTP'],
+                                ["FTP",5,'bulk transport']],
+
+        "Analytics": [["Probability Distributions",4,'Bernoulli, Binomial, Exponential, Geometric, Memoryless, Normal, Poisson, Weibull'],
+                                ['Design of Experiment',5,'A/B testing, ANOVA, Factorial, Multi-armed bandit, Blocking, Balanced'],
+                                ["Data",4,'Attribute, Categorical, Feature, PCA, Predictor, Quantitative, Scaling, Strucuted/Unstructured, Time Series'],
+                                ["Variable Selection",4,'Backward Eliminiation, Forward Selection, Elastic Net, Overfitting, Ridge Regression, Stepwise Regression, Lasso Regression'],
+                                ["Model Quality",4,'AIC, BIC, Confusion Matrices, k-fold cross-validation, MLE']],   
+  
+
+        "Data Science": [["Unsupervised Machine Learning",4,'Clustering (kmeans), Deep Learning, Neral Netowrk'],
+                                ["Supervised Machine Learning",4,'Classification (KNN,SVM),Regression'],
+                                ["Regression",4,'AUC, ROC, R-Sqaured, Bayesian, Box-Cox, CART, Classification Tree, Linear, Logistic, KNN regression, Spline Regression'],
+                                ["Time Series Models",4,'ARIMA, Seasonality, Exponential Smoothing, GARCH, Holt-Winters, Moving Average, Trend, Cycles'],
+                                ["Deterministic Optimization",4,'Convex/Concave, Greedy algorithm,Integer program,NP hard,Louvain algorithm']],
                                                             
                                   
                                   }
@@ -150,3 +159,19 @@ def get_garmin_demo_data():
     df_combo_avg_distance = visualize_data_utils.create_combo_chart_Avgerage_Distance(df)
     return df
    
+
+def get_network_graph_data():
+
+    data_path = 'static/demo_data/board_games.csv'
+    df = pd.read_csv(data_path)
+    print(df)
+    ls = df.values.tolist()
+    print(ls)
+    for i in ls:
+        print(i,',')
+
+
+    df_json = df.to_json()
+    print(df_json)
+
+    return df

@@ -20,11 +20,13 @@ def index():
 
     title_text = 'Welcome to my site!'
 
+    skills = helper.get_skill_content()
 
     title = "Hello! I am currently a Data Scientist and I created this site as a way to host my projects, share ideas and explore development tools!"
     return render_template('index.html',
                                 title_text=title,
                                 title=title_text,
+                                skills = skills,
                                 id="index")
 
 
@@ -64,7 +66,7 @@ def graph():
 
     # path to demo data
     
-    data_path = "/templates/board_games.csv"
+    data_path = "/static/demo_data/board_games.csv"
     #d3_path = "/templates/lib/d3.v5.min.js"
     return render_template('/graph.html',
                             data_path =data_path)
@@ -72,6 +74,9 @@ def graph():
 
 @app.route('/garmin', methods=['POST', 'GET'])
 def garmin():
+
+    helper.get_network_graph_data()
+
 
     # get the title content for the portfolio page
     title_text = "Analyzing this data allows me to gain insights into my running techniques. For example, I know I have the best cadence and run the fastest when running 3 miles in contrast to 2 or 4).\nAdditionally, I can see my heart rate is decreasing over the past 8 years, meaning I am getting more fit and optimizing my anaerobic threshold."

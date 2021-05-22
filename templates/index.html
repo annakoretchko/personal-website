@@ -47,7 +47,7 @@
                     <div class="row justify-content-center">
                         <div class="row index-img text-center">
                             <!-- <h6>Udacity's Intro to Data Structures and Algorithms</h6> -->
-                            <h6>Algorithmic Trading -- Removing Human Bias</h6>
+                            <h6>Algorithmic Trading: Removing Human Bias</h6>
 
                         </div>
                     </div>
@@ -69,6 +69,49 @@
         </div>
 
    
+
+  
+
+    <div class="row about-row justify-content-center">
+        <div class="col-12 p- text-center">
+            <h2 class="index-header">My Skills:</h2>
+        </div>
+    </div>
+    <div class="row row-legend justify-content-center">
+        <div class="col-12 p-0 text-center">
+            <p>
+                1 - Basic<span class="about-legend"></span>
+                2 - Novice<span class="about-legend"></span>
+                3 - Intermediate
+            </p>
+            <p class="m-0">
+                4 - Advanced<span class="about-legend"></span>
+                5 - Expert
+            </p>
+        </div>
+    </div>
+    <div class="row about-row justify-content-center">
+        {% for topic, one_skill in skills.items() %}
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="skill-cat text-center">
+                <h5>{{ topic }}</h5>
+            </div>
+            <div class="row">
+                {% for item in one_skill %}
+                {% set level = item[1]/5*100 %}
+                <div class="col-12 text-right">
+                    <p>{{ item[0] }} - {{ item[1] }}</p>
+                    <div class="skill-bar">
+                        <div class="skill-spec2" style="width: {{ level }}%;">
+                        </div>
+                        <span class="tooltiptext">{{ item[2] }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
    
     </section>
 

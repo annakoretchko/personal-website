@@ -468,20 +468,31 @@ h2.about-header
     margin-bottom: 15px;
 }
 
+.skill-spec2
+{
+    position: absolute;
+    height: 100%;
+    background-image: linear-gradient(to bottom right,  #2CD4A7,  #2CD4A7);
+    /*background-color: #33C6B8;*/
+    border-radius: 3px;
+    z-index: 9;
+}
+
 .skill-spec
 {
     position: absolute;
     height: 100%;
-    background-image: linear-gradient(to bottom right, rgba(51,198,184, 1), rgba(51,198,184, 0.5));
+    background-image: linear-gradient(to bottom right,#33C6B8, #33C6B8);
     /*background-color: #33C6B8;*/
     border-radius: 3px;
-    z-index: 10;
+    z-index: 9;
 }
 
 /* This code was taken from https://www.w3schools.com/css/css_tooltip.asp */
 /* Tooltip container */
 .tooltip {
     position: relative;
+    width: auto;
     display: inline-block;
     border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
   }
@@ -506,6 +517,7 @@ h2.about-header
 /* Show the tooltip text when you mouse over the tooltip container */
 .skill-bar:hover .tooltiptext {
   visibility: visible;
+  width: auto;
 }
 /* end of the text taken from w3schools*/
 
