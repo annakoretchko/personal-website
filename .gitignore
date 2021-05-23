@@ -135,3 +135,6 @@ secrets.py
 # except
 !Month.csv
 !board_games.csv
+!average-rating.csv
+!ratings-by-country.csv
+!world_countries.json

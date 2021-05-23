@@ -72,6 +72,31 @@ def graph():
                             data_path =data_path)
 
 
+
+@app.route('/interactive', methods=['POST', 'GET'])
+def interactive():
+
+    # path to demo data
+    
+    data_path = "/static/demo_data/board_games.csv"
+    #d3_path = "/templates/lib/d3.v5.min.js"
+    return render_template('/interactive.html',
+                            data_path =data_path)
+
+
+
+@app.route('/choropleth', methods=['POST', 'GET'])
+def choropleth():
+
+    # path to demo data
+    
+    data_path = "/static/demo_data/average-ratingcsv"
+    #d3_path = "/templates/lib/d3.v5.min.js"
+    return render_template('/choropleth.html',
+                            data_path =data_path)
+
+
+
 @app.route('/garmin', methods=['POST', 'GET'])
 def garmin():
 

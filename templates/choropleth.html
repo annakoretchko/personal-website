@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Average Rating of Board Games Across the World</title>
+
+<style>
+  .names {
+    fill: none;
+    stroke: #fff;
+    stroke-linejoin: round;
+  }
+  
+  /* Tooltip CSS */
+  .d3-tip {
+    line-height: 1.5;
+    font-weight: 400;
+    font-family:"avenir next", Arial, sans-serif;
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #FFA500;
+    border-radius: 1px;
+    pointer-events: none;
+  }
+
+  /* Creates a small triangle extender for the tooltip */
+  .d3-tip:after {      
+    box-sizing: border-box;
+    display: inline;
+    font-size: 8px;
+    width: 100%;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    pointer-events: none;
+    
+  }
+
+  /* Northward tooltips */
+  .d3-tip.n:after {
+    content: "\25BC";
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+    text-align: center;
+  }
+
+  /* Eastward tooltips */
+  .d3-tip.e:after {
+    content: "\25C0";
+    margin: -4px 0 0 0;
+    top: 50%;
+    left: -8px;
+  }
+
+  /* Southward tooltips */
+  .d3-tip.s:after {
+    content: "\25B2";
+    margin: 0 0 1px 0;
+    top: -8px;
+    left: 0;
+    text-align: center;
+  }
+
+  /* Westward tooltips */
+  .d3-tip.w:after {
+    content: "\25B6";
+    margin: -4px 0 0 -1px;
+    top: 50%;
+    left: 100%;
+  }
+  #dropdown {
+            margin-bottom: 20px;
+            margin-right: 35px;
+      }
+
+  #sidetitle {
+
+    margin-bottom: 20px;
+            margin-right: 35px;
+  }   
+  text{
+    pointer-events:none;
+  }
+ 
+
+  .details{
+    color: white;
+  }
+
+          /* h2 {
+            margin-top: 20px;
+            margin-left: 35px;
+        } */
+</style>
+<link rel="icon" href="/static/img/home.png">
+<body>
+    <h1>Average Rating of Board Games Across the World</h1>
+    <h2>Select Board Game:</h2>
+
+      <!-- Dropdown -->
+      <select id="dropdown"></select>
+      
+
+      <div id="map" class="svg-container"></div>
+      <div id="sidetitle" class="svg-container"></div>
+
+
+
+
+      <script src="{{url_for('static', filename='lib_d3/d3-dsv.min.js')}}"></script>
+      <script src="{{url_for('static', filename='lib_d3/d3-geo-projection.v2.min.js')}}"></script>
+      <script src="{{url_for('static', filename='lib_d3/d3-legend.min.js')}}"></script>
+      <script src="{{url_for('static', filename='lib_d3/d3-tip.min.js')}}"></script>
+      <script src="{{url_for('static', filename='lib_d3/d3.v5.min.js')}}"></script>
+      <script src="{{url_for('static', filename='lib_d3/topojson.v2.min.js')}}"></script>
+
+
+<script>
+const format = d3.format(',');
+
+// Set tooltips
+const tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(d => `<strong>Country: </strong><span class='details'>${d.properties.name}<br>
+    </span><strong>Game: </strong><span class='details'>${(d.csv_data[1])}</span><br>
+    </span><strong>Avg Rating: </strong><span class='details'>${format(d.csv_data[0])}</span><br>
+    </span><strong>Number of Users: </strong><span class='details'>${format(d.csv_data[2])}</span>`);
+
+const margin = {top: 0, right: 0, bottom: 0, left: 0};
+const width = 1100 - margin.left - margin.right;
+const height = 500 - margin.top - margin.bottom;
+
+
+
+
+
+
+// reading in the data //
+
+
+Promise.all([
+	d3.json('/static/demo_data/world_countries.json'),
+    d3.csv ('/static/demo_data/ratings-by-country.csv')
+
+]).then(function(d) {
+  ready(d[0], d[1]);
+  dropdown(d[0],d[1]);
+  
+});
+
+
+
+/// drop down function/getting selected data //
+var chosenGame = [];
+function dropdown(data,csv_data) {
+
+    
+    d3.select("#dropdown")
+        .on("change", function(d)
+        {
+        var selected = d3.select("#dropdown").node().value;
+        chosenGame = String(selected);
+        ready(data, csv_data)
+      })
+
+    //return ready(data, csv_data);
+  }
+
+  // d3.select('#sidetitle')
+  //   .append("text","Select Board Game")
+
+
+
+
+ 
+// filtering data and creating map //
+
+function ready(data, csv_data) {
+  const populationById = {};
+  const populationById_2 = {};
+  var newArray = csv_data.filter(function(item) {
+                return item.Game == String(chosenGame);});
+  // idea is to pull the newArray and feed that to the below as the
+  //selected csv_data ////
+  //getting unique list of games for drop down
+  const distinctGames = [... new Set (csv_data.map(x => x.Game))];
+  distinctGames.sort();
+
+  // filling drop down menu
+  //console.log(distinctGames)
+  d3.select("#dropdown")
+    .selectAll("option")
+    .data(distinctGames)
+    .enter()
+    .append("option")
+    .text(function(d) { return d; });
+
+  // removes all map realted features that way it replaces rather than appends
+  d3.select("div#map").selectAll("svg").remove();
+
+
+  // now start making the graph
+ var map = d3.select('div#map')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height)
+                .append('g')
+                .attr('class', 'map');
+    ///tiempo para hacer la legend 
+    var g = map.append("g")
+                .attr("class", "legendThreshold")
+                .attr("transform", "translate(925,20)");
+
+    map.append('g')
+            .append("text")
+            .attr("x", width-150)  
+            .attr("y", height-10)
+            .attr("font-size", "15px")
+            .attr("font-family", "Sans serif")
+            .style('fill', 'white')
+            .text("akoretchko3");
+
+
+    const projection = d3.geoRobinson()
+                .scale(148)
+                .rotate([352, 0, 0])
+                .translate( [width / 2, height / 2]);
+
+    const path = d3.geoPath().projection(projection);
+     
+    // tool tip call
+    map.call(tip);
+
+    
+
+
+
+    // passes the starting point or the selected value for the map ///
+    /// want this variable to be the output form the drop down, rest is perfect
+    if (chosenGame === undefined || chosenGame.length == 0) {
+        var selectedGame = "6 nimmt!";
+        update_map(selectedGame)
+
+    } else {
+        d3.select("map").selectAll("svg").remove();
+        //var selectedGame = String(csv_data[0].Game)
+        var selectedGame = String(newArray[0].Game);
+        update_map(selectedGame)
+
+
+    }
+    console.log(selectedGame)
+
+           
+    
+    function update_map(selectedGame) {
+
+
+
+    color_data = []
+    // var num_users = [];
+    // go through csv and get avg rating for each country 
+    csv_data.forEach(d => { 
+        //// this if satement will contolr the sleciton. once we get the slection it will replace "catan" here
+        if (d.Game === selectedGame) { ///// trying to put the drop down selection here to filter
+            //console.log(d.Game)
+            populationById[d.Country] = [+d['Average Rating'] ,d.Game,+d["Number of Users"]]; 
+            populationById_2[d.Country] = [+d['Average Rating'] ]
+            color_data.push([+d['Average Rating'] ])
+
+            //console.log(color_data)
+        }
+
+
+        });
+
+    
+    
+    // go through json.features to get avg rating for each country from csv file joined on county (name in json)
+    data.features.forEach(d => { d.csv_data = populationById[d.properties.name] });
+    //console.log(populationById_2)
+    
+
+
+    color_data = color_data.flat();
+    
+
+        
+    var colorScheme = d3.schemeReds[4];
+    //["#fff5f0","#fff4ef","#fff4ee","#fff3ed","#fff2ec","#fff2eb","#fff1ea","#fff0e9",
+  
+    //var colorScheme = ["#f14936","#eb3c2e","#69000d","#67000d"]
+    const color = d3.scaleQuantile()
+                    .domain(color_data)
+                    .range(colorScheme);
+
+                    
+
+function GameValues(csv_data, selectedGame){
+            var gameData = [];
+            var out1 = [];
+                for (let i = 0; i < csv_data.length; i++) {
+                    if (csv_data[i].Game == selectedGame) {
+                        temp1 = csv_data[i];
+                        gameData.push(temp1['Average Rating'])
+                    }
+                }
+                    let Max1 = Math.max.apply(null, gameData)
+                    let Min1 = Math.min.apply(null, gameData)
+                    increment1 = (Max1 - Min1)/4
+                    start1 = Min1;
+                    end1 = start1 + increment1;
+                    formatDecimalComma = d3.format(",.2f")
+                    for (let j = 0; j < 4; j++) {
+                        str1 = String(formatDecimalComma(start1)+' to '+formatDecimalComma(end1))
+                        out1.push(str1)
+                        start1 = end1
+                        end1 += increment1
+                    }
+        //console.log('Max Min values are -',out1)
+        
+        return out1
+        };   
+
+        var labels = GameValues(csv_data, selectedGame)
+
+    //var labels = ['6.00 to 7.83','7.83 to 8.00','8.00 to 8.39','8.39 to 10.00'];
+
+    var legend = d3.legendColor()
+                .labels(function (d) { return labels[d.i]; })
+                .shapePadding(4)
+                .scale(color);
+                map.select(".legendThreshold")
+                .call(legend);
+
+
+    //create the map from the above 
+    map.append('g')
+        .attr('class', 'countries')
+        .selectAll('path')
+        .data(data.features)
+        .enter().append('path')
+        .attr('d', path)
+        .style('fill', function(d) {
+          d.total = populationById_2[d.properties.name];
+          if (d.total === undefined || d.total == 0)
+          {return "grey"}
+          else {
+          return color(d.total)}
+        })
+        .style('stroke', 'white')
+        .style('opacity', 0.8)
+        .style('stroke-width', 0.3)
+        // tooltips
+        .on('mouseover',function(d){
+            tip.show(d);
+            d3.select(this)
+            .style('opacity', 1)
+            .style('stroke-width', 3)
+            //var select_country = d;
+            //console.log(d)
+
+        })
+        .on('mouseout', function(d){
+            tip.hide(d);
+            d3.select(this)
+            .style('opacity', 0.8)
+            .style('stroke-width',0.3);
+        });
+
+        map.append('path')
+        .datum(topojson.mesh(data.features, (a, b) => a.id !== b.id))
+        .attr('class', 'names')
+        .attr('d', path);
+
+
+
+}
+
+
+    }
+    
+    
+
+
+
+</script>
+
+</body>
+
+</html>
+
+
