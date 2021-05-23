@@ -32,7 +32,7 @@
 
 <p align="center">
   <a href="https://anna-koretchko.ue.r.appspot.com/garmin">
-    <img src="static/img/portfolio-website2.png" alt="Logo" width="800" height="500">
+    <img src="static/img/portfolio-website3.png" alt="Logo" width="800" height="500">
   </a>
 
   <h3 align="center">Personal Website</h3>
@@ -66,13 +66,10 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<p align="center">
-<img src="images/Garmin-logo2.jpeg" alt="Logo"> 
-</p>
-I am an avid running and love using my Garmin Forerunner 945 to collect all the data available while I run. Over the past 8 years, I have accumulated quite a large amount of data. I created this python package for anyone to analyse their Garmin Data from the Garmin Connect site and gain deeper understanding about their running analytics!
 
+I initially started off this project as a way to work on m web development skills. I quickly became enamored by it as it allows me to share my data science insights with the rest of the world in a quick manner (URL). Everyone can benefit from data science insights, but not everyone has python installed and knows how to weild the terminal. Thus this project sort of became a passion for me as a way to share to my friends, family, and colleagues what it is I do all day while sitting at my computer. 
 
-* If you wanna try on your own but don't have a Garmin account, feel free to use the data in the demo-data folder!
+I hope you enjoy!
 
 
 
