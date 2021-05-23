@@ -10,6 +10,11 @@
     color: #2CD4A7;
 }
 
+#graph-navbarbrand
+{
+    color:orange;
+}
+
 #portfolio-navbarbrand
 {
     color: #2FDEDB;
@@ -29,6 +34,12 @@
 {
     background-color: #2CD4A7;
 }
+
+#graph-nav-link:hover, #graph-btn-lang
+{
+    background-color: orange;
+}
+
 
 #portfolio-nav-link:hover, #portfolio-btn-lang
 {
