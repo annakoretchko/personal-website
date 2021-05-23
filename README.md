@@ -82,8 +82,7 @@ Huge thanks to RealPython who helped me sort out my thughts and figure out how t
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-This packages allows Garmin Connect users to analyize their data in a pythonic manner, which can be extrapolated further into a myriad of projects! 
-_To see a live demo of the graphs/outputs, please refer to the [Demo](https://anna-koretchko.ue.r.appspot.com/garmin)_
+_Current Link to site » [Site](https://anna-koretchko.ue.r.appspot.com/garmin)_
 
 
 
