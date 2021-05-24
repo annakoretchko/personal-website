@@ -22,7 +22,7 @@ def index():
 
     skills = helper.get_skill_content()
 
-    title = "Hello! I am currently a Data Scientist and I created this site as a way to host my projects, share ideas and explore development tools!"
+    title = "Hello! I am currently a Data Scientist and I created this site as a way to host my projects, share ideas and explore development tools."
     return render_template('index.html',
                                 title_text=title,
                                 title=title_text,
@@ -36,7 +36,7 @@ def portfolio():
     # default language if just portfolio is entered in url
 
         # get the title content for the portfolio page
-    title_text = "Here are some of my best, newest, or just intersting projects I have done. Enjoy the demos and exploring the source code on my GitHub."
+    title_text = "Here are some of my best, newest, or just intersting projects I have done. Enjoy the demo's and exploring the source code on my GitHub."
 
     # get all projects from the database
     zipped = helper.get_portfolio_content()
