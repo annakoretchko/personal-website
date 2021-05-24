@@ -24,3 +24,4 @@ __pycache__/
 !average-rating.csv
 !ratings-by-country.csv
 !world_countries.json
+!secrets.py
