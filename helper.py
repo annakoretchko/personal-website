@@ -42,14 +42,14 @@ def get_skill_content():
 
         "Analytics": [["Probability Distributions",4,'Bernoulli, Binomial, Exponential, Geometric, Memoryless, Normal, Poisson, Weibull'],
                                 ['Design of Experiment',5,'A/B testing, ANOVA, Factorial, Multi-armed bandit, Blocking, Balanced'],
-                                ["Data",4,'Attribute, Categorical, Feature, PCA, Predictor, Quantitative, Scaling, Strucuted/Unstructured, Time Series'],
-                                ["Variable Selection",4,'Backward Eliminiation, Forward Selection, Elastic Net, Overfitting, Ridge Regression, Stepwise Regression, Lasso Regression'],
+                                ["Data",4,'Attribute, Categorical, Feature, PCA, Predictor, Quantitative, Scaling, Structured/Unstructured, Time Series'],
+                                ["Variable Selection",4,'Backward Elimination, Forward Selection, Elastic Net, Overfitting, Ridge Regression, Stepwise Regression, Lasso Regression'],
                                 ["Model Quality",4,'AIC, BIC, Confusion Matrices, k-fold cross-validation, MLE']],   
   
 
         "Data Science": [["Unsupervised Machine Learning",4,'Clustering (kmeans), Deep Learning, Neral Netowrk'],
                                 ["Supervised Machine Learning",4,'Classification (KNN,SVM),Regression'],
-                                ["Regression",4,'AUC, ROC, R-Sqaured, Bayesian, Box-Cox, CART, Classification Tree, Linear, Logistic, KNN regression, Spline Regression'],
+                                ["Regression",4,'AUC, ROC, R-Squared, Bayesian, Box-Cox, CART, Classification Tree, Linear, Logistic, KNN regression, Spline Regression'],
                                 ["Time Series Models",4,'ARIMA, Seasonality, Exponential Smoothing, GARCH, Holt-Winters, Moving Average, Trend, Cycles'],
                                 ["Deterministic Optimization",4,'Convex/Concave, Greedy algorithm,Integer program,NP hard,Louvain algorithm']],
                                                             
