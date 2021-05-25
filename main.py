@@ -50,7 +50,7 @@ def portfolio():
 def about():
 
     # get the title content for the portfolio page
-    title_text = "I am extremely passionate about data, as it allows to cross over into any field and is integral to every thing we do today. I love fitness and finance, thus a lot of my personal pet projects are around my own fitness or financial data. I have my Master's from Georgia Tech and am intersted in FinTech and Financial Engineering."
+    title_text = "I am extremely passionate about data, as it allows to cross over into any field and is integral to everything we do today. I love fitness and finance, thus a lot of my personal pet projects are around my own fitness or financial data. I have my Master's from Georgia Tech and am intersted in FinTech and Financial Engineering."
 
     skills = helper.get_skill_content()
 
@@ -86,7 +86,7 @@ def interactive():
     
     data_path = "/static/demo_data/board_games.csv"
     #d3_path = "/templates/lib/d3.v5.min.js"
-    title_text = "My family is extremely competitive and loves to play board games. I wanted to work on some of my interactive data visualization skills and decided to use board game data as inspiration. The graph analysis board game rankings by user over time and helps explore which games are popular today!"
+    title_text = "My family is extremely competitive and loves to play board games. I wanted to work on some of my interactive data visualization skills and decided to use board game data as inspiration. The graph analyzes board game rankings by user over time and helps explore which games are popular today!"
     title = "Board Game Analysis Line Graph"
     return render_template('/interactive.html',
                             data_path =data_path,
@@ -128,7 +128,7 @@ def garmin():
                             title_text=title_text,
                             demo_data = demo_data,
                             title="Garmin Data Exploration",
-                            id="garmin")
+                            id="choropleth")
 
 
 
