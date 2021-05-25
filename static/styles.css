@@ -92,7 +92,10 @@
     background-color: #2CD4A7;
 }
 
-
+#garmin-title
+{
+    background-color:navy;
+}
 
 #portfolio-title
 {
@@ -125,10 +128,7 @@
     background-color:navy;
 }
 
-#garmin-title
-{
-    background-color:navy;
-}
+
 .container
 {
     min-height:100%;
