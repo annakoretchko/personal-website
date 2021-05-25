@@ -67,7 +67,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-I initially started off this project as a way to work on m web development skills. I quickly became enamored by it as it allows me to share my data science insights with the rest of the world in a quick manner (URL). Everyone can benefit from data science insights, but not everyone has python installed and knows how to weild the terminal. Thus this project sort of became a passion for me as a way to share to my friends, family, and colleagues what it is I do all day while sitting at my computer. 
+I initially started off this project as a way to work on m web development skills. I quickly became enamored by it as it allows me to share my data science insights with the rest of the world in a quick manner (URL). Everyone can benefit from data science insights, but not everyone has python installed and knows how to wield the terminal. Thus this project sort of became a passion for me as a way to share to my friends, family, and colleagues what it is I do all day while sitting at my computer. 
 
 I hope you enjoy!
 
@@ -75,7 +75,7 @@ I hope you enjoy!
 
 ### Shout out
 
-Huge thanks to RealPython who helped me sort out my thughts and figure out how to employ my first flask app
+Huge thanks to RealPython who helped me sort out my thoughts and figure out how to employ my first flask app
 * [RealPython](https://realpython.com/python-web-applications/#build-a-basic-python-web-application)
 
 
