@@ -114,6 +114,10 @@ def garmin():
                             title="Garmin Data Exploration",
                             id="about")
 
+
+
+
+
 @app.route('/contact', methods=["GET","POST"])
 def contact():
     title_text = "TITLE HERE"
