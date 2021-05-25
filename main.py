@@ -36,7 +36,7 @@ def portfolio():
     # default language if just portfolio is entered in url
 
         # get the title content for the portfolio page
-    title_text = "Here are some of my best, newest, or just intersting projects I have done. Enjoy the demo's and exploring the source code on my GitHub."
+    title_text = "Here are some of my best, newest, or just interesting projects I have done. Enjoy the demo's and exploring the source code on my GitHub."
 
     # get all projects from the database
     zipped = helper.get_portfolio_content()
