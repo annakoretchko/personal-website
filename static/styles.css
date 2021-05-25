@@ -12,7 +12,16 @@
 
 #graph-navbarbrand
 {
-    color:orange;
+    color:navy;
+}
+
+#interactive-navbarbrand
+{
+    color:navy;
+}
+#choropleth-navbarbrand
+{
+    color:navy;
 }
 
 #portfolio-navbarbrand
@@ -37,10 +46,21 @@
 
 #graph-nav-link:hover, #graph-btn-lang
 {
-    background-color: orange;
+    background-color: navy;
+    color: white;
 }
 
+#interactive-nav-link:hover, #interactive-btn-lang
+{
+    background-color: navy;
+    color: white;
+}
 
+#choropleth-nav-link:hover, #graph-btn-lang
+{
+    background-color: navy;
+    color: white;
+}
 #portfolio-nav-link:hover, #portfolio-btn-lang
 {
     background-color: #2FDEDB;
@@ -81,6 +101,20 @@
     background-color: orange;
 }
 
+#graph-title
+{
+    background-color:navy;
+}
+
+#interactive-title
+{
+    background-color:navy;
+}
+
+#choropleth-title
+{
+    background-color:navy;
+}
 .container
 {
     min-height:100%;

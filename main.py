@@ -68,8 +68,14 @@ def graph():
     
     data_path = "/static/demo_data/board_games.csv"
     #d3_path = "/templates/lib/d3.v5.min.js"
+
+    title_text = "Nodes, edges and weights are commonly used in data science today as the world increasingly places more value on network graphs. This graph allows the user to explore relationships between board games that are commonly played amongst the same user."
+    title = "Board Game Analysis Network Graph"
     return render_template('/graph.html',
-                            data_path =data_path)
+                            data_path =data_path,
+                            title_text = title_text,
+                            title = title, 
+                            id = "graph")
 
 
 
@@ -80,8 +86,13 @@ def interactive():
     
     data_path = "/static/demo_data/board_games.csv"
     #d3_path = "/templates/lib/d3.v5.min.js"
+    title_text = "My family is extremely competitive and loves to play board games. I wanted to work on some of my interactive data visualization skills and decided to use board game data as inspiration. The graph analysis baord game rankings by user over time and helps explore which games are popular today!"
+    title = "Board Game Analysis Line Graph"
     return render_template('/interactive.html',
-                            data_path =data_path)
+                            data_path =data_path,
+                            title_text = title_text,
+                            title = title,
+                            id = "interactive")
 
 
 
@@ -92,8 +103,13 @@ def choropleth():
     
     data_path = "/static/demo_data/average-ratingcsv"
     #d3_path = "/templates/lib/d3.v5.min.js"
+    title = "Board Game Analysis Choropleth Map"
+    title_text = "This geographical illustration lets the user interact and see where games are popular accross the world! You'd be surprised by the amount of board game data available for data science!"
     return render_template('/choropleth.html',
-                            data_path =data_path)
+                            data_path =data_path,
+                            title = title,
+                            title_text = title_text,
+                            id = "choropleth")
 
 
 
