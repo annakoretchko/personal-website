@@ -128,7 +128,7 @@ def garmin():
                             title_text=title_text,
                             demo_data = demo_data,
                             title="Garmin Data Exploration",
-                            id="about")
+                            id="garmin")
 
 
 

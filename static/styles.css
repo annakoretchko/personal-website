@@ -23,7 +23,10 @@
 {
     color:navy;
 }
-
+#garmin-navbarbrand
+{
+    color:navy;
+}
 #portfolio-navbarbrand
 {
     color: #2FDEDB;
@@ -57,6 +60,12 @@
 }
 
 #choropleth-nav-link:hover, #graph-btn-lang
+{
+    background-color: navy;
+    color: white;
+}
+
+#garmin-nav-link:hover, #graph-btn-lang
 {
     background-color: navy;
     color: white;
@@ -112,6 +121,11 @@
 }
 
 #choropleth-title
+{
+    background-color:navy;
+}
+
+#garmin-title
 {
     background-color:navy;
 }
