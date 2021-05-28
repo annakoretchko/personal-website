@@ -27,6 +27,11 @@
 {
     color:navy;
 }
+
+#strava-navbarbrand
+{
+    color:navy;
+}
 #portfolio-navbarbrand
 {
     color: #2FDEDB;
@@ -70,6 +75,12 @@
     background-color: navy;
     color: white;
 }
+
+#strava-nav-link:hover, #graph-btn-lang
+{
+    background-color: navy;
+    color: white;
+}
 #portfolio-nav-link:hover, #portfolio-btn-lang
 {
     background-color: #2FDEDB;
@@ -93,6 +104,10 @@
 }
 
 #garmin-title
+{
+    background-color:navy;
+}
+#strava-title
 {
     background-color:navy;
 }

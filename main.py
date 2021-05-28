@@ -61,6 +61,28 @@ def about():
                             id="about")
 
 
+@app.route('/strava', methods=['POST', 'GET'])
+def strava():
+
+    # get the title content for the portfolio page
+    title_text = "I have been using Strava since 2014, and for those of you unfamiliar with what Strava is, it's essentially a social media for runners, bikers and swimmers alike. A platform where equally obsessed athletes can gather and ogle over their exercise data. \n\
+                I have been collecting running, swimming, lifting, and social media data surrounding my exercise efforts for the past 7 years, so I figured it was time to start doing some analytics ont he data. And sharing my methods and approach with you! \n\
+                This project I will be going through the following: \n\
+                    1. Provide a method to gather your most recent Strava data automatically, using python, via Strava's API \n\
+                    2. Gather your historic Strava data through their site \n\
+                    3. Clean and join the new and historic data \n\
+                Start exploring my data and asking serious questions, like, can we predict the number of kudos I will receive on my next run by how many pictures I post? \n\
+                But seriously, doing some cool Machine Learning, simple stats and other fun math to interpret our data!"
+
+    skills = helper.get_skill_content()
+
+    return render_template('/strava.html',
+                            title_text=title_text,
+                            skills = skills,
+                            title="Strava Analysis",
+                            id="strava")
+
+
 @app.route('/graph', methods=['POST', 'GET'])
 def graph():
 
@@ -136,7 +158,7 @@ def garmin():
 
 @app.route('/contact', methods=["GET","POST"])
 def contact():
-    title_text = "TITLE HERE"
+    title_text = "Please shoot me an e-mail with any suggestions, comments, or concerns."
     
     form = helper.ContactForm()
     
@@ -162,7 +184,7 @@ def contact():
         return render_template('/contact.html', 
                                 form=form,
                                 title_text=title_text,
-                                title = "CONTACT TILEEEEE",
+                                title = "Let's Connect!",
                                 id = "contact")
 
 
