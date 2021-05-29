@@ -8,5 +8,67 @@
 {% block main %}
 
 
+<section class="home-content">
 
-{% endblock %}
+        
+    <div class="container p-0">
+    
+        <div class="row portfolio-row justify-content-center">
+     
+
+         
+
+            <main class="container p-0"> 
+
+
+                <div class="col-12 col-md-5">
+                    <div class="lead">
+                        <a class="title-link-strava" target="_blank" href="https://github.com/annakoretchko/strava_analysis"><h5>Where Do I Run Faster?</h5></a>
+                        <p class="lead">
+                            I lived in hilly Raleigh, North Carolina for a year and have been in warm flat South Florida since then. I wanted to see if I ran faster in the cold mountains of NC or flat humidity of FL. 
+                        </p>
+                    </div>
+                    
+                </div>
+            <div class = "chart" id = "location_graph">
+                <script>
+                    var graphs = {{plot | safe}};
+                    Plotly.plot('location_graph',graphs,{});
+                </script>
+            </div>
+            
+            <a>Alas, it appears I ran pretty much the same at both locations (although my Max was higher in NC...maybe all those downhills...)</a>
+            <a>Let's check elevation vs speed to see!</a>
+            
+            <div class = "chart" id = "elevation_graph">
+                <script>
+                    var graphs2 = {{plot2 | safe}};
+                    Plotly.plot('elevation_graph',graphs2,{});
+                </script>
+            </div>
+            <a>There does seem to be a semi strong negative correlation here!</a>
+            <a>The higher the elevation, the slower I go...proof hills are the worst.</a>
+            <br>
+   
+            <p class="lead">Just to confirm this, let's try a few different models.</p>
+
+            <form name = "model_selection"  method="post">
+        
+            <select class="form-select" id = "model_selection" name  = "model_selection" aria-label="Default select example" >
+                <option disabled selected value> -- Choose a Model -- </option>
+                <option value="Regression">Linear Regression</option>
+                <option value="DecisionTree">Decision Tree</option>
+                <option value="knn">k-NN</option>
+                
+              </select>
+       
+              <button type = 'submit' id = 'submit' class = 'btn btn-primary'>Submit</button>
+            </form>
+            <div class = "chart" id = "mutiple_models">
+                <script>
+                    var graphs3 = {{plot3 | safe}};
+                    Plotly.plot('mutiple_models',graphs3,{});
+                </script>
+            </div>
+            <p class="lead">Yup, all models come to the same conclusions; Hills just aren't fun to run up. </p>
+        {% endblock %}
