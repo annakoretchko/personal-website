@@ -25,6 +25,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 from sklearn.model_selection import train_test_split
 from sklearn import linear_model, tree, neighbors
+from sklearn.svm import SVR
 
 
 from utils import get_data_utils as get_data_utils
@@ -350,3 +351,57 @@ def train_and_display(run, name):
 
 
     return plot_json3
+
+
+def predict_kudos():
+
+    file_path ='static/demo_data/new_activities_clean.csv'
+    df = pd.read_csv(file_path)
+        #Create new dataframe with only columns I care about
+    cols = ['kudos_count', 'total_photo_count', 'type', 'distance', 'moving_time',   
+            'average_speed', 'max_speed','total_elevation_gain',
+            'activity_id','comment_count','average_heartrate','average_temp'
+        ]
+    df = df[cols]
+
+    mesh_size = .02
+    margin = 0
+
+
+    X = df[['max_speed', 'distance']]
+    y = df['kudos_count']
+    
+    print(df)
+    print(X)
+    print(y)
+    # df = px.data.iris()
+
+    # X = df[['sepal_width', 'sepal_length']]
+    # y = df['petal_width']
+    # print(df)
+    # print(X)
+    # print(y)
+
+    # Condition the model on sepal width and length, predict the petal width
+    model = SVR(C=1.)
+    model.fit(X, y)
+
+    # Create a mesh grid on which we will run our model
+    x_min, x_max = X.max_speed.min() - margin, X.max_speed.max() + margin
+    y_min, y_max = X.distance.min() - margin, X.distance.max() + margin
+    xrange = np.arange(x_min, x_max, mesh_size)
+    yrange = np.arange(y_min, y_max, mesh_size)
+    xx, yy = np.meshgrid(xrange, yrange)
+
+    # Run model
+    pred = model.predict(np.c_[xx.ravel(), yy.ravel()])
+    pred = pred.reshape(xx.shape)
+
+    # Generate the plot
+    fig = px.scatter_3d(df, x='max_speed', y='distance', z='kudos_count')
+    fig.update_traces(marker=dict(size=5))
+    fig.add_traces(go.Surface(x=xrange, y=yrange, z=pred, name='pred_surface'))
+
+    plot_json4 = json.dumps(fig, cls = plotly.utils.PlotlyJSONEncoder)
+
+    return plot_json4

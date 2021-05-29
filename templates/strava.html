@@ -6,7 +6,20 @@
 {% endblock %}
 
 {% block main %}
+<style>
+    .title-link-strava
+{
+    color: navy;
+}
+.stats-img {  
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+border: 3px solid black;  
 
+}  
+</style>
 
 <section class="home-content">
 
@@ -71,4 +84,26 @@
                 </script>
             </div>
             <p class="lead">Yup, all models come to the same conclusions; Hills just aren't fun to run up. </p>
-        {% endblock %}
+
+            <a class="title-link-strava" target="_blank" href="https://support.strava.com/hc/en-us/articles/216918397-What-is-Kudos-"><h5>The question we have all been waiting for...can we predict the number of Kudos I will get on a certain run?</h5></a>
+       
+            <div class = "chart" id = "MLR">
+                <script>
+                    var graphs4 = {{plot4 | safe}};
+                    Plotly.plot('MLR',graphs4,{});
+                </script>
+            </div>
+            <p class="lead">Looks like none of the features we have do a great job of predicting Kudos. I suppose my friends are more flippant when it comes to handing out kudos. </p>
+            <p class="lead">Here is the Ordinary Least Squares (OLS) Regression Results of testing all the features. You can see the low R^2 value (.27, we want closer to 1) is indicative of these features not being highly correlated with the amount of kuods given.</p>
+       
+      
+
+            <a target="_blank" href="https://github.com/annakoretchko/strava_analysis/blob/master/strava_analysis/jupyter_visuals/data_visualization.ipynb">
+                <div class='img3'></div>
+                <img class="stats-img" src="/static/img/stats_output.png">
+                <div class='img3'></div>
+            </a>
+            <br>
+            <a class="title-link-strava" target="_blank" href="https://github.com/annakoretchko/strava_analysis"><h5>Thanks for joining me on this Strava journey. If you want to see how I used the API to get the data or look at more analysis, click here!</h5></a>
+            
+            {% endblock %}

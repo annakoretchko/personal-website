@@ -73,11 +73,13 @@ def strava():
     model_selection = request.form.get("model_selection")
     graph_json, graph_json2,df = helper.compare_time_frames()
     graph_json3 = helper.train_and_display(df,model_selection)
+    graph_json4 = helper.predict_kudos()
     return render_template('/strava.html',
                             title_text=title_text,
                             plot = graph_json,
                             plot2 = graph_json2,
                             plot3 = graph_json3,
+                            plot4 = graph_json4,
                             title="Strava Analysis",
                             id="choropleth")
 
