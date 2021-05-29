@@ -61,25 +61,25 @@ def about():
                             id="about")
 
 
-# @app.route('/strava', methods=['POST', 'GET'])
-# def strava():
+@app.route('/strava', methods=['POST', 'GET'])
+def strava():
 
-#     # get the title content for the portfolio page
-#     title_text = "I have been using Strava since 2014, and for those of you unfamiliar with what Strava is, it's essentially a social media for runners, bikers and swimmers alike. A platform where equally obsessed athletes can gather and ogle over their exercise data. \n\
-#                 I have been collecting running, swimming, lifting, and social media data surrounding my exercise efforts for the past 7 years, so I figured it was time to start doing some analytics on the data. \n\
-#                 I used Strava's API to start exploring my data and asking serious questions, like, can I predict the number of kudos I will receive on my next run by how many pictures I post? \n\
-#                 But seriously, I also did some cool Machine Learning, simple stats and other fun math to interpret my data!"
+    # get the title content for the portfolio page
+    title_text = "I have been using Strava since 2014, and for those of you unfamiliar with what Strava is, it's essentially a social media for runners, bikers and swimmers alike. A platform where equally obsessed athletes can gather and ogle over their exercise data. \n\
+                I have been collecting running, swimming, lifting, and social media data surrounding my exercise efforts for the past 7 years, so I figured it was time to start doing some analytics on the data. \n\
+                I used Strava's API to start exploring my data and asking serious questions, like, can I predict the number of kudos I will receive on my next run by how many pictures I post? \n\
+                But seriously, I also did some cool Machine Learning, simple stats and other fun math to interpret my data!"
 
-#     model_selection = request.form.get("model_selection")
-#     graph_json, graph_json2,df = helper.compare_time_frames(model_selection)
-#     graph_json3 = helper.train_and_display(df,model_selection)
-#     return render_template('/strava.html',
-#                             title_text=title_text,
-#                             plot = graph_json,
-#                             plot2 = graph_json2,
-#                             plot3 = graph_json3,
-#                             title="Strava Analysis",
-#                             id="strava")
+    model_selection = request.form.get("model_selection")
+    graph_json, graph_json2,df = helper.compare_time_frames()
+    graph_json3 = helper.train_and_display(df,model_selection)
+    return render_template('/strava.html',
+                            title_text=title_text,
+                            plot = graph_json,
+                            plot2 = graph_json2,
+                            plot3 = graph_json3,
+                            title="Strava Analysis",
+                            id="choropleth")
 
 
 @app.route('/graph', methods=['POST', 'GET'])
