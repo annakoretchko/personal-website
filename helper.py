@@ -199,6 +199,14 @@ def get_network_graph_data():
     return df
 
 
+def load_JSON(file_path):
+
+    with open(file_path, 'r') as file:
+        data = file.read()
+
+    return data
+
+  
 
 # def compare_time_frames():
     
@@ -289,6 +297,9 @@ def get_network_graph_data():
 #     fig.update_layout(barmode='group')
     
 #     plot_json = json.dumps(fig, cls = plotly.utils.PlotlyJSONEncoder)
+#     print("internaly done")
+  
+
 
 #     select_time = pd.concat([time_frame_2,time_frame_1])
    

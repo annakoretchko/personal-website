@@ -5,11 +5,14 @@ import helper
 import pandas as pd
 from flask_mail import Mail, Message
 import secrets
-
+import json
+import plotly
+import plotly.io
 
 # Configure application
 app = Flask(__name__)
 mail= Mail(app)
+SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
 
 app.config['SECRET_KEY'] = secrets.SECRET_KEY
@@ -75,12 +78,37 @@ def strava():
 
     model_selection = request.form.get("model_selection")
     print(model_selection)
+ 
     if model_selection == 'knn':
-        print('knn chosen')
-    # graph_json, graph_json2,df = helper.compare_time_frames()
+        file_path3 = os.path.join(SITE_ROOT, "static",'demo_data', "graph_3_strava_knn.txt")
+        graph_json3 = helper.load_JSON(file_path3)
+        
+    if model_selection == None:
+        file_path3 = os.path.join(SITE_ROOT, "static",'demo_data', "graph_3_strava_knn.txt")
+        graph_json3 = helper.load_JSON(file_path3)
+
+    if model_selection == 'Regression':
+        file_path3 = os.path.join(SITE_ROOT, "static",'demo_data', "graph_3_strava_Regression.txt")
+        graph_json3 = helper.load_JSON(file_path3)
+
+    if model_selection == 'DecisionTree':
+        file_path3 = os.path.join(SITE_ROOT, "static",'demo_data', "graph_3_strava_DecisionTree.txt")
+        graph_json3 = helper.load_JSON(file_path3)
+
+    #graph_json, graph_json2,df = helper.compare_time_frames()
     # graph_json3 = helper.train_and_display(df,model_selection)
     # graph_json4 = helper.predict_kudos()
 
+    # rcreating paths
+    file_path = os.path.join(SITE_ROOT, "static",'demo_data', "graph_1_strava.txt")
+    file_path2 = os.path.join(SITE_ROOT, "static",'demo_data', "graph_4_strava.txt")
+    file_path4= os.path.join(SITE_ROOT, "static",'demo_data', "graph_4_strava.txt")
+
+    graph_json = helper.load_JSON(file_path)
+    graph_json2 = helper.load_JSON(file_path2)
+    graph_json4 = helper.load_JSON(file_path4)
+  
+    
     return render_template('/strava.html',
                             title_text=title_text,
                             plot = graph_json,
