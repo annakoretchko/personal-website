@@ -101,7 +101,7 @@ def strava():
 
     # rcreating paths
     file_path = os.path.join(SITE_ROOT, "static",'demo_data', "graph_1_strava.txt")
-    file_path2 = os.path.join(SITE_ROOT, "static",'demo_data', "graph_4_strava.txt")
+    file_path2 = os.path.join(SITE_ROOT, "static",'demo_data', "graph_2_strava.txt")
     file_path4= os.path.join(SITE_ROOT, "static",'demo_data', "graph_4_strava.txt")
 
     graph_json = helper.load_JSON(file_path)
