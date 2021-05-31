@@ -70,10 +70,17 @@ def strava():
                 I used Strava's API to start exploring my data and asking serious questions, like, can I predict the number of kudos I will receive on my next run by how many pictures I post? \n\
                 But seriously, I also did some cool Machine Learning, simple stats and other fun math to interpret my data!"
 
+    # changed this so the models are pre-loaded and static
+    
+
     model_selection = request.form.get("model_selection")
-    graph_json, graph_json2,df = helper.compare_time_frames()
-    graph_json3 = helper.train_and_display(df,model_selection)
-    graph_json4 = helper.predict_kudos()
+    print(model_selection)
+    if model_selection == 'knn':
+        print('knn chosen')
+    # graph_json, graph_json2,df = helper.compare_time_frames()
+    # graph_json3 = helper.train_and_display(df,model_selection)
+    # graph_json4 = helper.predict_kudos()
+
     return render_template('/strava.html',
                             title_text=title_text,
                             plot = graph_json,
