@@ -77,23 +77,27 @@ def strava():
     
 
     model_selection = request.form.get("model_selection")
-    print(model_selection)
+  
  
     if model_selection == 'knn':
         file_path3 = os.path.join(SITE_ROOT, "static",'demo_data', "graph_3_strava_knn.txt")
         graph_json3 = helper.load_JSON(file_path3)
+        model_selection = "k-NN Model"
         
     if model_selection == None:
         file_path3 = os.path.join(SITE_ROOT, "static",'demo_data', "graph_3_strava_knn.txt")
         graph_json3 = helper.load_JSON(file_path3)
+        model_selection = "k-NN Model"
 
     if model_selection == 'Regression':
         file_path3 = os.path.join(SITE_ROOT, "static",'demo_data', "graph_3_strava_Regression.txt")
         graph_json3 = helper.load_JSON(file_path3)
+        model_selection = "Linear Regression Model"
 
     if model_selection == 'DecisionTree':
         file_path3 = os.path.join(SITE_ROOT, "static",'demo_data', "graph_3_strava_DecisionTree.txt")
         graph_json3 = helper.load_JSON(file_path3)
+        model_selection = "Decision Tree Model"
 
     #graph_json, graph_json2,df = helper.compare_time_frames()
     # graph_json3 = helper.train_and_display(df,model_selection)
@@ -108,6 +112,7 @@ def strava():
     graph_json2 = helper.load_JSON(file_path2)
     graph_json4 = helper.load_JSON(file_path4)
   
+ 
     
     return render_template('/strava.html',
                             title_text=title_text,
@@ -116,6 +121,7 @@ def strava():
                             plot3 = graph_json3,
                             plot4 = graph_json4,
                             title="Strava Analysis",
+                            model_selection = model_selection,
                             id="choropleth")
 
 

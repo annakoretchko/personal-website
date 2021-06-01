@@ -19,6 +19,20 @@
 border: 3px solid black;  
 
 }  
+
+.graph-title-strava{
+
+font-size: 150%;
+color: Navy;
+font-weight: bold;
+margin-left: auto;
+    margin-right: auto;
+    width: 18em;
+    overflow: hidden;
+    white-space: nowrap;
+
+}
+
 </style>
 
 <section class="home-content">
@@ -77,6 +91,8 @@ border: 3px solid black;
        
               <button type = 'submit' id = 'submit' class = 'btn btn-primary'>Submit</button>
             </form>
+
+            <p class="graph-title-strava">{{model_selection}} </p>
             <div class = "chart" id = "mutiple_models">
                 <script>
                     var graphs3 = {{plot3 | safe}};
@@ -94,7 +110,7 @@ border: 3px solid black;
                 </script>
             </div>
             <p class="lead">Looks like none of the features we have do a great job of predicting Kudos. I suppose my friends are more flippant when it comes to handing out kudos. </p>
-            <p class="lead">Here is the Ordinary Least Squares (OLS) Regression Results of testing all the features. You can see the low R^2 value (.27, we want closer to 1) is indicative of these features not being highly correlated with the amount of kuods given.</p>
+            <p class="lead">Here is the Ordinary Least Squares (OLS) Regression Results of testing all the features. You can see the low R^2 value (.27, we want closer to 1) is indicative of these features not being highly correlated with the amount of Kudos given.</p>
        
       
 
