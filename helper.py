@@ -31,7 +31,7 @@ def get_skill_content():
 
    
     skill_dict = {
-        "Python": [["Science Stack",5,'NumPy, pandas, SciPy, scikit learn, cvxpy, sklearn'],
+        "Python": [["Science Stack",5,'NumPy, pandas, SciPy, scikit learn, cvxpy, sklearn,HyperOpt'],
                                   ["Data Visualization",4,'D3, Plotly, flask, bootstrap'],
                                   ["Deployment",4,'PyInstaller, Docker, GCP, Bash'],
                                   ["OOP and Procedural",3,'Modeling, Inheritance, Class, jupyter notebooks'],
@@ -51,11 +51,11 @@ def get_skill_content():
                                 ["Model Quality",4,'AIC, BIC, Confusion Matrices, k-fold cross-validation, MLE']],   
   
 
-        "Data Science": [["Unsupervised Machine Learning",4,'Clustering (kmeans), Deep Learning, Neral Netowrk'],
+        "Data Science": [["Unsupervised Machine Learning",4,'Clustering (kmeans), Deep Learning, Neural Network (CNN & DNN)'],
                                 ["Supervised Machine Learning",4,'Classification (KNN,SVM),Regression'],
                                 ["Regression",4,'AUC, ROC, R-Squared, Bayesian, Box-Cox, CART, Classification Tree, Linear, Logistic, KNN regression, Spline Regression'],
                                 ["Time Series Models",4,'ARIMA, Seasonality, Exponential Smoothing, GARCH, Holt-Winters, Moving Average, Trend, Cycles'],
-                                ["Deterministic Optimization",4,'Convex/Concave, Greedy algorithm,Integer program,NP hard,Louvain algorithm']],
+                                ["Deterministic Optimization",4,'Convex/Concave, Greedy algorithm,Integer program,NP hard,Louvain algorithm,HyperOpt']],
                                                             
                                   
                                   }
