@@ -53,7 +53,7 @@ def portfolio():
 def about():
 
     # get the title content for the portfolio page
-    title_text = "I am extremely passionate about data, as it allows to cross over into any field and is integral to everything we do today. I love fitness and finance, thus a lot of my personal pet projects are around my own fitness or financial data. I have my Master's from Georgia Tech in Analytics and am intersted in FinTech and Financial Engineering. Additionally, I love increasing efficiency wherever possible and optimizing problems through by employing data and modeling!"
+    title_text = "I am extremely passionate about data, as it allows to cross over into any field and is integral to everything we do today. I love fitness and finance, thus a lot of my personal pet projects are around my own fitness or financial data. I have my Master's from Georgia Tech in Analytics and am intersted in FinTech and Financial Engineering. I love increasing efficiency through optimization and employing data and modeling!"
 
     skills = helper.get_skill_content()
 
